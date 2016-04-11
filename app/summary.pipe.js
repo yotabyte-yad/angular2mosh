@@ -1,4 +1,4 @@
-System.register(['angular2/core', './contact-form.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,33 +10,30 @@ System.register(['angular2/core', './contact-form.component'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, contact_form_component_1;
-    var AppComponent;
+    var core_1;
+    var SummaryPipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (contact_form_component_1_1) {
-                contact_form_component_1 = contact_form_component_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            SummaryPipe = (function () {
+                function SummaryPipe() {
                 }
-                AppComponent = __decorate([
-                    core_1.Component({
-                        selector: 'my-app',
-                        template: "<contact-form><contact-form>",
-                        directives: [contact_form_component_1.ContactFormComponent],
-                        pipes: []
-                    }), 
+                SummaryPipe.prototype.transform = function (value, args) {
+                    var limit = (args && args[0]) ? parseInt(args[0]) : 50;
+                    if (value)
+                        return value.substring(0, limit) + "....";
+                };
+                SummaryPipe = __decorate([
+                    core_1.Pipe({ name: 'summary' }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], SummaryPipe);
+                return SummaryPipe;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("SummaryPipe", SummaryPipe);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=summary.pipe.js.map
